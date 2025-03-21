@@ -4,7 +4,359 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ANDI HOSPITAL 1 - Dashboard</title>
-  <link rel="stylesheet" href="index.css">
+  <style>* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  body {
+    display: flex;
+    background-color: #f5f5f5;
+  }
+
+  /* Sidebar Styles */
+  .sidebar {
+    width: 250px;
+    background-color: #2d3436;
+    color: white;
+    height: 100vh;
+    position: fixed;
+    overflow-y: auto;
+  }
+
+  .logo-container {
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .logo {
+    width: 80px;
+    height: 80px;
+    background-color: #ff3838;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    color: #33ff33;
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  .hospital-name {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .admin-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5px;
+    font-size: 14px;
+  }
+
+  .admin-badge span {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: #33ff33;
+    border-radius: 50%;
+    margin-right: 5px;
+  }
+
+  .menu {
+    margin-top: 20px;
+  }
+
+  .menu-item {
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .menu-item:hover {
+    background-color: #3d4446;
+  }
+
+  .menu-item.active {
+    background-color: #3d4446;
+  }
+
+  .menu-item i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+  }
+
+  .menu-item .arrow {
+    margin-left: auto;
+  }
+
+  /* Main Content Styles */
+  .main-content {
+    flex: 1;
+    margin-left: 250px;
+    padding: 20px;
+  }
+
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px 20px 0;
+  }
+
+  .nav-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  .dashboard-title {
+    color: #444;
+    margin-bottom: 5px;
+  }
+
+  .dashboard-subtitle {
+    color: #888;
+    font-size: 14px;
+  }
+
+  .dashboard-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+
+  .stat-card {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .stat-number {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+  }
+
+  .stat-number .trend {
+    font-size: 16px;
+    color: #f39c12;
+    margin-left: 5px;
+  }
+
+  .stat-title {
+    color: #666;
+    font-size: 14px;
+  }
+
+  .chart-container {
+    height: 60px;
+    margin-top: 15px;
+  }
+
+  .bar-chart {
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
+    gap: 2px;
+  }
+
+  .bar {
+    background-color: #33cc33;
+    width: 8px;
+    height: 20px;
+    flex-grow: 1;
+  }
+
+  .line-chart {
+    height: 100%;
+    position: relative;
+  }
+
+  .line {
+    position: absolute;
+    height: 2px;
+    background-color: #33cc33;
+    width: 100%;
+    top: 50%;
+  }
+
+  .progress-section {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+
+  .progress-card {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex: 2;
+  }
+
+  .enquiry-card {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex: 1;
+  }
+
+  .section-title {
+    color: #444;
+    margin-bottom: 15px;
+    font-size: 18px;
+  }
+
+  .section-subtitle {
+    color: #888;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .graph-container {
+    height: 300px;
+    width: 100%;
+    background-color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .graph-grid {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+  }
+
+  .grid-line {
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  .graph-y-axis {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0;
+  }
+
+  .y-value {
+    font-size: 12px;
+    color: #888;
+  }
+
+  .legend {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    color: #666;
+  }
+
+  .legend-color {
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+  }
+
+  .legend-color.patient {
+    background-color: #ddd;
+  }
+
+  .legend-color.appointment {
+    background-color: #33cc33;
+  }
+
+  .enquiry-list {
+    margin-top: 10px;
+  }
+
+  .enquiry-item {
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .enquiry-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .enquiry-message {
+    font-size: 14px;
+    color: #888;
+  }
+
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    body {
+      flex-direction: column;
+    }
+
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+      display: none;
+    }
+
+    .sidebar.open {
+      display: block;
+    }
+
+    .main-content {
+      margin-left: 0;
+      padding: 10px;
+    }
+
+    .nav-toggle {
+      display: block;
+    }
+
+    .progress-section {
+      flex-direction: column;
+    }
+
+    .dashboard-stats {
+      flex-direction: column;
+    }
+
+    .stat-card {
+      width: 100%;
+    }
+  }
+</style>
 </head>
 <body>
   <div class="sidebar" id="sidebar">

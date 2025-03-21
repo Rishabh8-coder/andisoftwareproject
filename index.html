@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ANDI HOSPITAL 1 - Dashboard</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="sidebar" id="sidebar">
+    <div class="logo-container">
+      <div class="logo">ANDI</div>
+      <div class="hospital-name">ANDI HOSPITAL 1</div>
+      <div class="admin-badge"><span></span> Admin</div>
+    </div>
+    <div class="menu">
+      <div class="menu-item active">
+        <i>🏠</i> Dashboard
+      </div>
+      <div class="menu-item">
+        <i>🏢</i> Department <span class="arrow">›</span>
+      </div>
+      <div class="menu-item">
+        <i>👨‍⚕️</i> Doctor <span class="arrow">›</span>
+      </div>
+      <div class="menu-item">
+        <i>🙋</i> Patient <span class="arrow">›</span>
+      </div>
+      <div class="menu-item">
+        <i>📅</i> Schedule <span class="arrow">›</span>
+      </div>
+      <div class="menu-item">
+        <i>📝</i> Appointment <span class="arrow">›</span>
+      </div>
+      <div class="menu-item">
+        <i>💊</i> Prescription <span class="arrow">›</span>
+      </div>
+      <div class="menu-item">
+        <i>💼</i> Account Manager <span class="arrow">›</span>
+      </div>
+      <div class="menu-item">
+        <i>👥</i> Human Resources <span class="arrow">›</span>
+      </div>
+      <div class="menu-item">
+        <i>🛏️</i> Bed Manager <span class="arrow">›</span>
+      </div>
+      <div class="menu-item">
+        <i>📢</i> Noticeboard <span class="arrow">›</span>
+      </div>
+      <div class="menu-item">
+        <i>📋</i> Case Manager <span class="arrow">›</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="top-bar">
+      <div>
+        <h1 class="dashboard-title">Dashboard</h1>
+        <div class="dashboard-subtitle">Home</div>
+      </div>
+      <div class="nav-toggle" onclick="toggleSidebar()">☰</div>
+    </div>
+
+    <div class="dashboard-stats">
+      <div class="stat-card">
+        <div class="stat-number"><span id="appointment-count">0</span> <span class="trend">▲</span></div>
+        <div class="stat-title">Appointment</div>
+        <div class="chart-container">
+          <div class="bar-chart">
+            <div class="bar" style="height: 40%"></div>
+            <div class="bar" style="height: 60%"></div>
+            <div class="bar" style="height: 45%"></div>
+            <div class="bar" style="height: 70%"></div>
+            <div class="bar" style="height: 55%"></div>
+            <div class="bar" style="height: 40%"></div>
+            <div class="bar" style="height: 60%"></div>
+            <div class="bar" style="height: 45%"></div>
+            <div class="bar" style="height: 70%"></div>
+            <div class="bar" style="height: 35%"></div>
+            <div class="bar" style="height: 50%"></div>
+            <div class="bar" style="height: 65%"></div>
+            <div class="bar" style="height: 45%"></div>
+            <div class="bar" style="height: 50%"></div>
+            <div class="bar" style="height: 85%"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-number"><span id="patient-count">0</span> <span class="trend">▲</span></div>
+        <div class="stat-title">Patient</div>
+        <div class="chart-container">
+          <svg width="100%" height="100%" viewBox="0 0 200 60">
+            <path d="M10,40 Q30,35 50,38 T90,35 T130,40 T170,30 T190,25" stroke="#33cc33" fill="none" stroke-width="2"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-number"><span id="doctor-count">0</span> <span class="trend">▲</span></div>
+        <div class="stat-title">Doctor</div>
+        <div class="chart-container">
+          <svg width="100%" height="100%" viewBox="0 0 200 60">
+            <path d="M10,35 L40,30 L70,40 L100,25 L130,38 L160,30 L190,35" stroke="#33cc33" fill="none" stroke-width="2"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-number"><span id="representative-count">0</span> <span class="trend">▲</span></div>
+        <div class="stat-title">Representative</div>
+        <div class="chart-container">
+          <svg width="100%" height="100%" viewBox="0 0 200 60">
+            <path d="M0,50 L20,45 L40,40 L60,45 L80,35 L100,40 L120,35 L140,40 L160,30 L180,25 L200,20" stroke="#33cc33" fill="none" stroke-width="2" />
+            <path d="M0,50 L20,45 L40,40 L60,45 L80,35 L100,40 L120,35 L140,40 L160,30 L180,25 L200,20 L200,60 L0,60 Z" fill="#33cc33" opacity="0.3" />
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="progress-section">
+      <div class="progress-card">
+        <h2 class="section-title">Total Progress</h2>
+        <div class="section-subtitle">Showing status from the last year</div>
+        <div class="graph-container">
+          <div class="graph-grid">
+            <!-- Grid lines generated by JS -->
+          </div>
+          <div class="graph-y-axis">
+            <div class="y-value">1.0</div>
+            <div class="y-value">0.8</div>
+            <div class="y-value">0.6</div>
+            <div class="y-value">0.4</div>
+            <div class="y-value">0.2</div>
+            <div class="y-value">0</div>
+            <div class="y-value">-0.2</div>
+            <div class="y-value">-0.4</div>
+            <div class="y-value">-0.6</div>
+            <div class="y-value">-0.8</div>
+          </div>
+        </div>
+        <div class="legend">
+          <div class="legend-item">
+            <div class="legend-color patient"></div>
+            <span>Patient</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color appointment"></div>
+            <span>Appointment</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="enquiry-card">
+        <h2 class="section-title">Enquiry</h2>
+        <div class="section-subtitle">Latest Enquiry</div>
+        <div class="enquiry-list">
+          <div class="enquiry-item">
+            <div class="enquiry-title">Swift</div>
+            <div class="enquiry-message">Need a Doctor for Check-up? JUST MAKE AN APPOINTMENT & YOU'RE DONE!</div>
+          </div>
+          <div class="enquiry-item">
+            <div class="enquiry-title">Test</div>
+            <div class="enquiry-message">Need a Doctor for Check-up? JUST MAKE AN APPOINTMENT & YOU'RE DONE!</div>
+          </div>
+          <div class="enquiry-item">
+            <div class="enquiry-title">Test</div>
+            <div class="enquiry-message">HELLO ADMIN!</div>
+          </div>
+          <div class="enquiry-item">
+            <div class="enquiry-title">John Doe</div>
+            <div class="enquiry-message">Hello World! A</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Function to toggle sidebar on mobile
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('open');
+    }
+
+    // Create grid lines for the graph
+    const gridContainer = document.querySelector('.graph-grid');
+    for (let i = 0; i < 100; i++) {
+      const gridItem = document.createElement('div');
+      gridItem.classList.add('grid-line');
+      gridContainer.appendChild(gridItem);
+    }
+
+    // Function to increment numbers from 0 to target value
+    function incrementCounter(elementId, targetValue, duration) {
+      const element = document.getElementById(elementId);
+      const startTime = Date.now();
+      const endTime = startTime + duration;
+      
+      function updateCounter() {
+        const currentTime = Date.now();
+        const progress = Math.min(1, (currentTime - startTime) / duration);
+        
+        const currentValue = Math.floor(progress * targetValue);
+        element.textContent = currentValue;
+        
+        if (currentTime < endTime) {
+          requestAnimationFrame(updateCounter);
+        } else {
+          element.textContent = targetValue;
+        }
+      }
+      
+      updateCounter();
+    }
+
+    // Start the counters when page loads
+    window.addEventListener('DOMContentLoaded', function() {
+      // Set page view counter in localStorage if it doesn't exist
+      if (!localStorage.getItem('pageViewCount')) {
+        localStorage.setItem('pageViewCount', 1);
+      } else {
+        // Increment page view counter
+        const count = parseInt(localStorage.getItem('pageViewCount'));
+        localStorage.setItem('pageViewCount', count + 1);
+      }
+
+      // Base values for the counters
+      const baseAppointment = 15;
+      const basePatient = 22;
+      const baseDoctor = 12;
+      const baseRepresentative = 1;
+
+      // Add page views to the base values
+      const pageViews = parseInt(localStorage.getItem('pageViewCount'));
+      const appointmentTarget = baseAppointment + pageViews;
+      const patientTarget = basePatient + pageViews;
+      const doctorTarget = baseDoctor + Math.floor(pageViews / 2); // Slower growth for doctors
+      const representativeTarget = baseRepresentative + Math.floor(pageViews / 3); // Even slower for representatives
+
+      // Start the counter animations
+      incrementCounter('appointment-count', appointmentTarget, 2000);
+      incrementCounter('patient-count', patientTarget, 2000);
+      incrementCounter('doctor-count', doctorTarget, 2000);
+      incrementCounter('representative-count', representativeTarget, 2000);
+    });
+  </script>
+</body>
+</html>
